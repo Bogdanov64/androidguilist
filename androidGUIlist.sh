@@ -1,35 +1,33 @@
+  GNU nano 6.2                                                                                                     ./list-01.sh                                                                                                               
 #!/bin/bash
 
-items=("xfce" "fvwm" "lxqt" "openbox")
-echo "Select an item from the list:"
+options=("xfce4" "fvwm" "openbox" "fluxbox")
 
-for index in "${!items[@]}"; do
-  echo "$((index+1)). ${items[index]}"
+# Print the menu and store the selected option in the variable 'selected'
+select selected in "${options[@]}"; do
+  case $selected in
+    "xfce4")
+      command="dbus-launch --exit-with-session xfce4-session"
+      break
+      ;;
+    "fvwm")
+      command="dbus-launch --exit-with-session fvwm"
+      break
+      ;;
+    "openbox")
+      command="dbus-launch --exit-with-session openbox"
+      break
+      ;;
+    "fluxbox")
+      command="dbus-launch --exit-with-session fluxbox"
+      break
+      ;;
+    *) echo "Invalid option";;
+  esac
 done
 
-read -p "Enter the item number: " choice
+# Execute the selected command with 'termux-x11'
+termux-x11 :1 -xstartup "$command"
 
-if [[ $choice -ge 1 && $choice -le ${#items[@]} ]]; then
-  echo "You selected: ${items[choice-1]}"
-  output=""
 
-  case ${items[choice-1]} in
-    xfce)
-      output="termux-x11 :1 -xstartup 'dbus-launch --exit-with-session xfce4-session'"
-      ;;
-    fvwm)
-      output="termux-x11 :1 -xstartup fvwm dbus-launch --exit-with-session fvwm"
-      ;;
-    lxqt)
-      output="termux-x11 :1 -xstartup lxqt dbus-launch --exit-with-session lxqt-session"
-      ;;
-    openbox)
-      output="termux-x11 :1 -xstartup openbox dbus-launch --exit-with-session openbox-session"
-      ;;
-  esac
 
-  echo "Output: $output"
-
-else
-  echo "Invalid choice!"
-fi
