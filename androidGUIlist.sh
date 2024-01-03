@@ -1,4 +1,3 @@
-  GNU nano 6.2                                                                                                     ./list-01.sh                                                                                                               
 #!/bin/bash
 
 items=("xfce" "fvwm" "lxqt" "openbox")
@@ -34,7 +33,3 @@ if [[ $choice -ge 1 && $choice -le ${#items[@]} ]]; then
 else
   echo "Invalid choice!"
 fi
-
-
-
-
