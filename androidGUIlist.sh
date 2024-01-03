@@ -1,4 +1,4 @@
-  GNU nano 6.2                                                                                                     ./list-01.sh                                                                                                               
+                                                                                                               
 #!/bin/bash
 
 options=("xfce4" "fvwm" "openbox" "fluxbox")
