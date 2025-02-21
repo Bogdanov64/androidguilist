@@ -17,12 +17,25 @@ if [ $exit_status != 0 ]; then
   exit 1
 fi
 
+# Function to check if a package is installed
+is_installed() {
+  dpkg -l | grep -q "^ii  $1"
+}
+
 # Determine the command based on the selected option
 case $selected in
   "xfce4")
+    if ! is_installed "xfce4"; then
+      echo "xfce4 is not installed. Installing..."
+      apt install -y xfce4
+    fi
     command="dbus-launch --exit-with-session xfce4-session"
     ;;
   "fvwm")
+    if ! is_installed "fvwm"; then
+      echo "fvwm is not installed. Installing..."
+      apt install -y fvwm
+    fi
     command="dbus-launch --exit-with-session fvwm"
     ;;
   "openbox")
