@@ -7,10 +7,10 @@
 </head>
 <body>
     <ul>
-        <li>git clone https://github.com</li>
-        <li>cd android</li>
-        <li>chmod +x ./aa</li>
-        <li>./aa</li>
+        <li>git clone https://github.com/Bogdanov64/androidguilist/</li>
+        <li>cd androidGUIlist</li>
+        <li>chmod +x ./androidGUIlist.sh</li>
+        <li>./androidGUIlist.sh</li>
     </ul>
 </body>
 </html>
